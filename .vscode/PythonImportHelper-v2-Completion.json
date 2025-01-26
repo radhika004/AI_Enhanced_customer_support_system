@@ -1,0 +1,142 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "Groq",
+        "importPath": "groq",
+        "description": "groq",
+        "isExtraImport": true,
+        "detail": "groq",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "IncomingIssue",
+        "kind": 6,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "class IncomingIssue(BaseModel):\n    subject: str\n    body: str\n@app.post(\"/save-issue\")\nasync def save_issue(incoming_issue: IncomingIssue):\n    try:\n        result = process_incoming_issue(incoming_issue.model_dump())\n        # Replace with your Zapier Webhook URL\n        webhook_url = \"https://hooks.zapier.com/hooks/catch/21371791/2f3clcp/\"\n        zapier_response = requests.post(webhook_url, json=result)",
+        "detail": "app.main",
+        "documentation": {}
+    },
+    {
+        "label": "get_sentiment",
+        "kind": 2,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "def get_sentiment(issue_body):\n    \"\"\"\n    Analyze the sentiment of the given issue body using the Groq API.\n    \"\"\"\n    try:\n        messages = [\n            {\n                \"role\": \"system\",\n                \"content\": \"\"\"\n                You are the customer support team assistant responsible for sentiment analysis.",
+        "detail": "app.main",
+        "documentation": {}
+    },
+    {
+        "label": "determine_priority",
+        "kind": 2,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "def determine_priority(subject, body):\n    \"\"\"\n    Determine the priority of the incoming issue based on keywords.\n    \"\"\"\n    combined_text = subject + \" \" + body\n    very_high_keywords = [\n        \"Disruption\", \"Failure\", \"Outage\", \"Critical\", \"Emergency\"\n    ]\n    for key in very_high_keywords:\n        if key.lower() in combined_text.lower():",
+        "detail": "app.main",
+        "documentation": {}
+    },
+    {
+        "label": "get_groq_response",
+        "kind": 2,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "def get_groq_response(issue_body):\n    \"\"\"\n    Generate a customer support response using the Groq API.\n    \"\"\"\n    try:\n        messages = [\n            {\n                \"role\": \"system\",\n                \"content\": \"Generate a polite and empathetic response for the user.\"\n            },",
+        "detail": "app.main",
+        "documentation": {}
+    },
+    {
+        "label": "process_incoming_issue",
+        "kind": 2,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "def process_incoming_issue(incoming_issue):\n    priority = determine_priority(incoming_issue[\"subject\"], incoming_issue[\"body\"])\n    sentiment = get_sentiment(incoming_issue[\"body\"])\n    response = get_groq_response(incoming_issue[\"body\"])\n    return {\n        \"subject\": incoming_issue[\"subject\"],\n        \"priority\": priority,\n        \"sentiment\": sentiment,\n        \"response\": response\n    }",
+        "detail": "app.main",
+        "documentation": {}
+    },
+    {
+        "label": "GROQ_API_KEY",
+        "kind": 5,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "GROQ_API_KEY = \"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\"\nclient = Groq(api_key=GROQ_API_KEY)\n# Function to get sentiment from Groq API\ndef get_sentiment(issue_body):\n    \"\"\"\n    Analyze the sentiment of the given issue body using the Groq API.\n    \"\"\"\n    try:\n        messages = [\n            {",
+        "detail": "app.main",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "client = Groq(api_key=GROQ_API_KEY)\n# Function to get sentiment from Groq API\ndef get_sentiment(issue_body):\n    \"\"\"\n    Analyze the sentiment of the given issue body using the Groq API.\n    \"\"\"\n    try:\n        messages = [\n            {\n                \"role\": \"system\",",
+        "detail": "app.main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "app = FastAPI()\nclass IncomingIssue(BaseModel):\n    subject: str\n    body: str\n@app.post(\"/save-issue\")\nasync def save_issue(incoming_issue: IncomingIssue):\n    try:\n        result = process_incoming_issue(incoming_issue.model_dump())\n        # Replace with your Zapier Webhook URL\n        webhook_url = \"https://hooks.zapier.com/hooks/catch/21371791/2f3clcp/\"",
+        "detail": "app.main",
+        "documentation": {}
+    },
+    {
+        "label": "result",
+        "kind": 5,
+        "importPath": "rough.5. Integrations.zapier",
+        "description": "rough.5. Integrations.zapier",
+        "peekOfCode": "result = process_incoming_issue(incoming_issue.model_dump())\n        # Replace with your Zapier Webhook URL\nwebhook_url = \"https://hooks.zapier.com/hooks/catch/21371791/2f3clcpzapier_response = requests.post(webhook_url, json=result)\n        if zapier_response.status_code == 200:\n            return {\"message\": \"Issue processed and sent to Zapier successfully.\", \"result\": result}\n        else:\n            raise HTTPException(status_code=zapier_response.status_code, detail=\"Failed to send data to Zapier\")",
+        "detail": "rough.5. Integrations.zapier",
+        "documentation": {}
+    },
+    {
+        "label": "webhook_url",
+        "kind": 5,
+        "importPath": "rough.5. Integrations.zapier",
+        "description": "rough.5. Integrations.zapier",
+        "peekOfCode": "webhook_url = \"https://hooks.zapier.com/hooks/catch/21371791/2f3clcpzapier_response = requests.post(webhook_url, json=result)\n        if zapier_response.status_code == 200:\n            return {\"message\": \"Issue processed and sent to Zapier successfully.\", \"result\": result}\n        else:\n            raise HTTPException(status_code=zapier_response.status_code, detail=\"Failed to send data to Zapier\")",
+        "detail": "rough.5. Integrations.zapier",
+        "documentation": {}
+    }
+]
