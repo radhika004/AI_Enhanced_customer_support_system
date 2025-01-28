@@ -18,50 +18,18 @@ Welcome to the Customer Support Issue Processing System! 🚀 This project uses 
   ```bash
   pip install fastapi requests groq pydantic uvicorn
 ---
-⚙️ Setup
-1️⃣ Configure API Key 🔑
+##⚙️ Setup
+-1️⃣ Configure API Key 🔑
 Replace GROQ_API_KEY in your code with your Groq API key. Obtain it by signing up at Groq’s website.
 
-2️⃣ Zapier Webhook URL 🌐
-Replace the placeholder Zapier webhook URL in the save_issue endpoint with your own.
+##2️⃣ Zapier Webhook URL 🌐
+-Replace the placeholder Zapier webhook URL in the save_issue endpoint with your own.
 
-3️⃣ Run the Application 🚀
-Start the FastAPI server with Uvicorn:
+##3️⃣ Run the Application 🚀
+-Start the FastAPI server with Uvicorn:
 ---
-🔗 API Endpoints
-📌 POST /save-issue
+##🔗 API Endpoints
+-📌 POST /save-issue
 Description: Processes incoming issues, analyzes sentiment, assigns priority, and generates a response. Sends the processed data to a Zapier webhook.
 
-Request Body 📤
-json
-Copy
-Edit
-{
-  "subject": "Issue Subject",
-  "body": "The issue description or body"
-}
-Response 📥
-✅ Success:
 
-json
-Copy
-Edit
-{
-  "message": "Issue processed and sent to Zapier successfully.",
-  "result": {
-    "subject": "System outage",
-    "priority": "VERY_HIGH",
-    "sentiment": "negative",
-    "response": "We apologize for the inconvenience. Our team is working on resolving the issue."
-  }
-}
-❌ Error:
-
-Returns an error message if processing fails.
-📚 Core Functions
-get_sentiment(issue_body): Analyzes sentiment using the Groq API.
-determine_priority(subject, body): Determines priority based on keywords.
-get_groq_response(issue_body): Generates a customer-friendly response via Groq.
-process_incoming_issue(incoming_issue): Orchestrates the processing of sentiment, priority, and response.
-📜 License
-This project is licensed under the MIT License. 📝 See the LICENSE file for details.
