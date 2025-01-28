@@ -80,7 +80,7 @@ Your application will be live at `http://127.0.0.1:8000`. 🎉
 ---
 
 ## 📜 License
-This project is licensed under the **MIT License**. 📝 See the LICENSE file for details.
+This project is licensed under the **MIT License**. 📝 See the LICENSE file for details.[https://github.com/radhika004/AI_Enhanced_customer_support_system/blob/main/LICENSE.md]
 
 ---
 
